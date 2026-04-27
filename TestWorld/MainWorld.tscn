@@ -1,0 +1,262 @@
+[gd_scene load_steps=9 format=3 uid="uid://t48c1uc3egda"]
+
+[ext_resource type="Script" uid="uid://bu7xh5hhhibbk" path="res://main_world.gd" id="1_7u2t8"]
+[ext_resource type="PackedScene" uid="uid://c8la1t2qak054" path="res://player.tscn" id="2_4xxmu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nu7tq"]
+size = Vector3(55, 60, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7c1qw"]
+size = Vector3(100, 1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i7llj"]
+size = Vector3(100, 60, 1.75)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_74u7v"]
+top_radius = 2.1
+bottom_radius = 2.9
+height = 2.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjeqb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4ur2"]
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_7u2t8")
+
+[node name="Structures" type="Node3D" parent="."]
+
+[node name="SpawnRoom" type="Node3D" parent="Structures"]
+
+[node name="Structure" type="Node3D" parent="Structures/SpawnRoom"]
+
+[node name="Wall3" type="MeshInstance3D" parent="Structures/SpawnRoom/Structure"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -30, 29, 0)
+mesh = SubResource("BoxMesh_nu7tq")
+skeleton = NodePath("../../..")
+
+[node name="Floor" type="MeshInstance3D" parent="Structures/SpawnRoom/Structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.1, 20.066647, -1.0000019, 0.029096603)
+mesh = SubResource("BoxMesh_7c1qw")
+skeleton = NodePath("../../..")
+
+[node name="Wall1" type="MeshInstance3D" parent="Structures/SpawnRoom/Structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 29, -27)
+mesh = SubResource("BoxMesh_i7llj")
+skeleton = NodePath("../../..")
+
+[node name="Wall2" type="MeshInstance3D" parent="Structures/SpawnRoom/Structure"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 29, 27)
+mesh = SubResource("BoxMesh_i7llj")
+skeleton = NodePath("../../..")
+
+[node name="Pillars" type="Node3D" parent="Structures/SpawnRoom/Structure"]
+
+[node name="Tube1" type="CSGCylinder3D" parent="Structures/SpawnRoom/Structure/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 12, 14)
+operation = 2
+radius = 2.0
+height = 20.0
+sides = 15
+
+[node name="HollowTube" type="CSGCylinder3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube1"]
+radius = 1.75
+height = 20.0
+sides = 15
+
+[node name="Base1" type="MeshInstance3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.252448, 0)
+mesh = SubResource("CylinderMesh_74u7v")
+skeleton = NodePath("../../../../..")
+
+[node name="LRing1" type="CSGTorus3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+inner_radius = 1.85
+outer_radius = 2.4
+sides = 15
+ring_sides = 15
+material = SubResource("StandardMaterial3D_cjeqb")
+
+[node name="TRing1" type="CSGTorus3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+inner_radius = 1.85
+outer_radius = 2.4
+sides = 15
+ring_sides = 15
+material = SubResource("StandardMaterial3D_y4ur2")
+
+[node name="Tube2" type="CSGCylinder3D" parent="Structures/SpawnRoom/Structure/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 12, -15)
+operation = 2
+radius = 2.0
+height = 20.0
+sides = 15
+
+[node name="HollowTube" type="CSGCylinder3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube2"]
+radius = 1.75
+height = 20.0
+sides = 15
+
+[node name="Base2" type="MeshInstance3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.252448, 0)
+mesh = SubResource("CylinderMesh_74u7v")
+skeleton = NodePath("../../../../..")
+
+[node name="LRing2" type="CSGTorus3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+inner_radius = 1.85
+outer_radius = 2.4
+sides = 15
+ring_sides = 15
+material = SubResource("StandardMaterial3D_cjeqb")
+
+[node name="TRing2" type="CSGTorus3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+inner_radius = 1.85
+outer_radius = 2.4
+sides = 15
+ring_sides = 15
+material = SubResource("StandardMaterial3D_y4ur2")
+
+[node name="Tube3" type="CSGCylinder3D" parent="Structures/SpawnRoom/Structure/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 12, 14)
+operation = 2
+radius = 2.0
+height = 20.0
+sides = 15
+
+[node name="HollowTube" type="CSGCylinder3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube3"]
+radius = 1.75
+height = 20.0
+sides = 15
+
+[node name="Base3" type="MeshInstance3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.252448, 0)
+mesh = SubResource("CylinderMesh_74u7v")
+skeleton = NodePath("../../../../..")
+
+[node name="LRing3" type="CSGTorus3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+inner_radius = 1.85
+outer_radius = 2.4
+sides = 15
+ring_sides = 15
+material = SubResource("StandardMaterial3D_cjeqb")
+
+[node name="TRing3" type="CSGTorus3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+inner_radius = 1.85
+outer_radius = 2.4
+sides = 15
+ring_sides = 15
+material = SubResource("StandardMaterial3D_y4ur2")
+
+[node name="Tube4" type="CSGCylinder3D" parent="Structures/SpawnRoom/Structure/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 12, -15)
+operation = 2
+radius = 2.0
+height = 20.0
+sides = 15
+
+[node name="HollowTube" type="CSGCylinder3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube4"]
+radius = 1.75
+height = 20.0
+sides = 15
+
+[node name="Base4" type="MeshInstance3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.252448, 0)
+mesh = SubResource("CylinderMesh_74u7v")
+skeleton = NodePath("../../../../..")
+
+[node name="LRing4" type="CSGTorus3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+inner_radius = 1.85
+outer_radius = 2.4
+sides = 15
+ring_sides = 15
+material = SubResource("StandardMaterial3D_cjeqb")
+
+[node name="TRing4" type="CSGTorus3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+inner_radius = 1.85
+outer_radius = 2.4
+sides = 15
+ring_sides = 15
+material = SubResource("StandardMaterial3D_y4ur2")
+
+[node name="Tube5" type="CSGCylinder3D" parent="Structures/SpawnRoom/Structure/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 12, 14)
+operation = 2
+radius = 2.0
+height = 20.0
+sides = 15
+
+[node name="HollowTube" type="CSGCylinder3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube5"]
+radius = 1.75
+height = 20.0
+sides = 15
+
+[node name="Base5" type="MeshInstance3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.252448, 0)
+mesh = SubResource("CylinderMesh_74u7v")
+skeleton = NodePath("../../../../..")
+
+[node name="LRing5" type="CSGTorus3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+inner_radius = 1.85
+outer_radius = 2.4
+sides = 15
+ring_sides = 15
+material = SubResource("StandardMaterial3D_cjeqb")
+
+[node name="TRing5" type="CSGTorus3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -29)
+inner_radius = 1.85
+outer_radius = 2.4
+sides = 15
+ring_sides = 15
+material = SubResource("StandardMaterial3D_y4ur2")
+
+[node name="Tube6" type="CSGCylinder3D" parent="Structures/SpawnRoom/Structure/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 12, -15)
+operation = 2
+radius = 2.0
+height = 20.0
+sides = 15
+
+[node name="HollowTube" type="CSGCylinder3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube6"]
+radius = 1.75
+height = 20.0
+sides = 15
+
+[node name="Base6" type="MeshInstance3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.252448, 0)
+mesh = SubResource("CylinderMesh_74u7v")
+skeleton = NodePath("../../../../..")
+
+[node name="LRing6" type="CSGTorus3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+inner_radius = 1.85
+outer_radius = 2.4
+sides = 15
+ring_sides = 15
+material = SubResource("StandardMaterial3D_cjeqb")
+
+[node name="TRing6" type="CSGTorus3D" parent="Structures/SpawnRoom/Structure/Pillars/Tube6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 29)
+inner_radius = 1.85
+outer_radius = 2.4
+sides = 15
+ring_sides = 15
+material = SubResource("StandardMaterial3D_y4ur2")
+
+[node name="Entities" type="Node3D" parent="."]
+
+[node name="Player" parent="Entities" instance=ExtResource("2_4xxmu")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -22, 1, 0)
+
+[node name="SpawnPoint" type="Marker3D" parent="Entities"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -22, 2, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.8660255, 0.50000006, 0, -0.50000006, -0.8660255, 0, 123, -122)
